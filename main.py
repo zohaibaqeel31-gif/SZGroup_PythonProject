@@ -51,3 +51,50 @@ def calculator():
 
 if __name__ == "__main__":
     calculator()
+
+
+
+
+import random
+
+def play_game():
+    print("\nWelcome to the Number Guessing Game!")
+    print("I'm thinking of a number between 1 and 100.")
+    print("Try to guess it.")
+
+    secret_number = random.randint(1, 100)
+    attempts = 0
+
+    while True:
+        # Get the user's guess
+        try:
+            guess = int(input("Enter your guess: "))
+        except ValueError:
+            print("Please enter a valid whole number.")
+            continue
+
+        attempts += 1
+
+        # Give feedback
+        if guess < secret_number:
+            print("Your guess is too low.")
+        elif guess > secret_number:
+            print("Your guess is too high.")
+        else:
+            print(f"Great job! You guessed the number in {attempts} attempts.")
+            break
+
+
+def main():
+    while True:
+        play_game()
+
+        # Ask if they want to play again
+        answer = input("Would you like to play again? (yes/no): ").strip().lower()
+        if answer not in ("yes", "y"):
+            print("Thanks for playing. Goodbye!")
+            break
+
+
+if __name__ == "__main__":
+    main()
